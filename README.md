@@ -31,7 +31,7 @@ Directory    Description
 ```
 
 ## Commands for directory/file
-### for directory
+#### for directory
 | Command | Description |
 | --- | --- |
 | pwd | display current directory |
@@ -40,7 +40,7 @@ Directory    Description
 | cd [dir] | move to [dir] |
 | mkdir [dir] | make directory named [dir] |
 
-### for file
+#### for file
 | Command | Description |
 | --- | --- |
 | cat [file] | show content of file |
@@ -52,21 +52,21 @@ Directory    Description
 | rm [file] | remove [file] |
 | rm -r [dir] | remove [dir], dir+files |
 
-### packaging
+#### packaging
 | Command | Description |
 | --- | --- |
 | tar -xvf file.tar | unpack file.tar |
 | tar -zvxf file.tar.gz | unpack file.tar.gz |
 | zip -r -q file.zip [dir] | compress [dir] to file.zip without display progress(-q) |
 
-### link
+#### link
 | Command | Description |
 | --- | --- |
 | ln -sf [target] [link-file] | make symblic link[link] of [target] |
 | ln [target] [link] | make hard link[link] of [target], copy entity of [target] |
 
 ## System management
-### General
+#### General
 | Command | Description |
 | --- | --- |
 | df -h | display file-system information |
@@ -78,7 +78,7 @@ Directory    Description
 | date | display system date-time |
 | date -s "dd/mm/yy HH:MM" | set date-time |
 
-### Network
+#### Network
 | Command | Description |
 | --- | --- |
 | wget [http://.../hoge.ext] | get file located in network |
@@ -86,7 +86,7 @@ Directory    Description
 | ssh -i [private-key] user@example.com | ssh to the [example.com] as [user] with [private-key] |
 | scp [local-file] user@example.com:~/ | send [local-file] to user's home directory of example.com |
 
-### User
+#### User
 | Command | Description |
 | --- | --- |
 | who | display login users |
@@ -96,7 +96,7 @@ Directory    Description
 | adduser [name] | add new user as [name] |
 | gpasswd -a [user] sudo | add sudo permission to [user] |
 
-### Path, environment
+#### Path, environment
 
 
 ## Library management
@@ -104,7 +104,7 @@ Directory    Description
 ## Text editing
 
 ## Misc.
-### git
+#### git
 | Command | Description |
 | --- | --- |
 | git clone https://... | clone repository from 'http://...' |
@@ -115,7 +115,7 @@ Directory    Description
 | git pull origin master | pull 'master' branch from 'origin', pull=fetch+merge |
 | git submodule update -init | initialize local repository, shold be used after pull latest branch from remote |
 | git add . | add all files under '.' |
-| git commit | commit all modify |
+| git commit -m "commit-comment" | commit all modify with comment |
 | git push origin [branch] | push [branch] to origin |
 
 
