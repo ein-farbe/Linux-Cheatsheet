@@ -1,4 +1,6 @@
 # Linux-Cheatsheet
+<!-- cheatsheet, linux, bash, vim -->
+
 This cheatsheet is summarized from personal experience and other online tutorials.
 
 > Disclaimer:
@@ -257,38 +259,48 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | git commit -m "commit-comment" | commit all modify with comment |
 | git push origin [branch] | push [branch] to origin |
 
-
 #### python
 ```
-python                      start python with interpreter
-python -V                   check python version
-python file.py              run the file.py
+python                      # start python with interpreter
+python -V                   # check python version
+python file.py              # run the file.py
 
-pip list                    display list of installed lib for python
-pip install [lib]           install python lib
+pip list                    # display list of installed lib for python
+pip install [lib]           # install python lib
 
 **e.g.**
-pip install numpy           install numpy lib (NumPy is the fundamental package for scientific computing with Python.)
-pip install opency-python   install open-cv lib (open-cv is Open Source Computer Vision Library.)
+pip install numpy           # install numpy lib (NumPy is the fundamental package for scientific computing with Python.)
+pip install opency-python   # install open-cv lib (open-cv is Open Source Computer Vision Library.)
 
-pip install -user [lib]     install python lib for current user only
-pip uninstall [lib]         uninstall python lib
-pip freeze > req.txt        output all the lib info to the req.txt file
-pip install -r req.txt      install all the lib from the req.txt file
+pip install -user [lib]     # install python lib for current user only
+pip uninstall [lib]         # uninstall python lib
+pip freeze > req.txt        # output all the lib info to the req.txt file
+pip install -r req.txt      # install all the lib from the req.txt file
+```
+
+#### Nvidia GPU
+```
+nvidia-smi          # display GPU information
+nvcc -V             # display CUDA version
 ```
 
 <!--
 #### c/c++
+```
+g++ source.cpp                      # compile source.cpp
+g++ source.cpp -o target            # compile source.cpp as "target"
+g++ -g source.cpp                   # compile source.cpp with debug info.
+g++ source1.cpp source2.cpp         # compile source1.cpp & source2.cpp
+g++ -I/.../include source.cpp       # 
+g++ -lm source.cpp
+g++ -Wall source.cpp
+g++ -std=c++11 source.cpp
+g++ -std=c++14 source.cpp
+```
 
 #### virtualenv
 
 #### Deep Learning framework
-
-#### Nvidia GPU
-```
-nvidia-smi          display GPU information
-nvcc -V             display CUDA version
-```
 
 #### Tips for trouble shooting
 
