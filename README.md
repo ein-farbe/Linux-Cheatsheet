@@ -115,6 +115,7 @@ Directory    Description
 
 #### Environment variable
 | Command | Description |
+| --- | --- |
 | echo 'export ...' >> ~/.bashrc | add path setting 'export ...' |
 | source ~/.bashrc | reload .bashrc file |
 
@@ -156,8 +157,7 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 #### command for text editing
 | Command | Description |
 | --- | --- |
-
-**move**
+| **move** ||
 | j | move to next line |
 | k | move to previous line |
 | h | move to left char |
@@ -172,8 +172,7 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | gg | move to the top of the file |
 | G  | move to the bottom of the file |
 | :7 | move to the 7th line, or can use any number |
-
-**edit**
+| **edit** ||
 | x | delete char under the cursor |
 | yy | copy current line |
 | dd | delete current line |
