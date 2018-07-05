@@ -51,6 +51,10 @@ Directory    Description
 | mv [src] [dst] | move files from [src] to [dst], rename |
 | rm [file] | remove [file] |
 | rm -r [dir] | remove [dir], dir+files |
+| ls    | list files |
+| ls -l | list files with line-wise |
+| ls -a | list all files, include hidden files |
+| ```ls | wc -w``` | count files |
 
 #### packaging
 | Command | Description |
@@ -85,10 +89,10 @@ Directory    Description
 | chmod ug+r [file] | add read permission to user&group |
 | chmod o-w [file] | delete write permission from others |
 
-[note]
- - u: user, g: group,  o: others, a: all
- - r: read, w: write,  x: execute
- - +: add,  -: delete, =: set
+> [note]
+>  - u: user, g: group,  o: others, a: all
+>  - r: read, w: write,  x: execute
+>  - +: add,  -: delete, =: set
 
 | Command | Description |
 | --- | --- |
@@ -131,13 +135,28 @@ There are mainly two library management systems. One is "dep" format system, ano
 #### "dep" format system: apt (for Debian, Ubuntu, Raspbian, etc.)
 | Command | Description |
 | --- | --- |
-| apt-get install [lib-name] | install [lib-name] |
-
+| apt-get install [lib]             | install [lib] |
+| apt-get --reinstall install [lib] | re-install [lib] |
+| apt-get remove [lib]              | remove [lib] |
+| apt-get purge [lib]               | remove [lib] with setting files |
+| apt-get clean                     | delete cache files |
+| apt-get check                     | check the status of packages |
+| apt-get -f install                | fix-install for the broken package |
+| dpkg -l                           | display list of the installed package |
+| apt-get update                    | update of the package info. |
+| apt-get upgrade                   | upgrade of the package info. |
 
 #### "rpm" format system: yum (for RedHat, CentOS, etc.)
 | Command | Description |
 | --- | --- |
-| yum install [lib-name] | install [lib-name] |
+| yum install [lib]      | install [lib] |
+| yum remove [lib]       | remove [lib] |
+| yum clean [lib]        | delete rpm files |
+| yum clean all          | delete all cache files |
+| yum list installed     | display list of the installed package |
+| yum update [lib]       | update [lib] |
+| yum info [lib]         | display info of [lib] |
+| rpm -ql [lib]          | display the directory where [lib] installed in |
 
 
 ## Text editing
@@ -173,7 +192,8 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | G  | move to the bottom of the file |
 | :7 | move to the 7th line, or can use any number |
 | **edit** ||
-| x | delete char under the cursor |
+| .  | do previous command again |
+| x  | delete char under the cursor |
 | yy | copy current line |
 | dd | delete current line |
 | p  | paste |
@@ -182,7 +202,42 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | [Ctrl]a | increment the value under the cursor |
 | [Ctrl]x | decrement the value under the cursor |
 | [Ctrl]p | completion the word |
+| **search** ||
+| /word | search "word", after that hit 'n' to search next, hit 'N' to back previous |
+| ?word | search "word" with opposite direction |
+| *     | search the word under the cursor |
+| **indent** ||
+| >> | add indent to current line |
+| << | delete indent from current line |
+| =  | modify indent automatically |
+| **window** ||
+| :sp  | separate the window horizontally |
+| :vsp | separate the window vertically   |
+| [Ctrl]w w | move to the next window |
+| [Ctrl]w x | switch the current window |
+| [Ctrl]w = | align the width of the window the same |
+| :q   | close current window |
+| **file** ||
+| :e [file] | open file |
+| :ls | display buffered file list |
+| :b [num] | open [num] buffer |
+| :w | save file |
+| :w [file] | save as [file] |
+| :q | close file |
+| :q! | close file without save |
+| ZZ | close with save |
+| **visual** ||
+| v | start visual selecting, whole of line |
+| [Ctrl]v | start visual selecting, block-wise | 
+| **mode** ||
+| i | in to insert mode |
+| a | in to insert mode as adding char |
+| o | in to insert mode as adding line |
+| [ESC] | back to the normal mode from insert mode |
+| **other** ||
+| :! [shell command] | execute [Shell command] |
 
+> [Note] configure by editing ~/.vimrc file.
 
 
 ## Misc.
@@ -196,19 +251,44 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | git checkout -b [new-branch] | create [new-branch] and checkout [new-branch] |
 | git pull origin master | pull 'master' branch from 'origin', pull=fetch+merge |
 | git submodule update -init | initialize local repository, shold be used after pull latest branch from remote |
+| git status | list all new or modified files |
+| git diff   | show file differences that haven't been staged |
 | git add . | add all files under '.' |
 | git commit -m "commit-comment" | commit all modify with comment |
 | git push origin [branch] | push [branch] to origin |
 
 
+#### python
+```
+python                      start python with interpreter
+python -V                   check python version
+python file.py              run the file.py
+
+pip list                    display list of installed lib for python
+pip install [lib]           install python lib
+
+**e.g.**
+pip install numpy           install numpy lib (NumPy is the fundamental package for scientific computing with Python.)
+pip install opency-python   install open-cv lib (open-cv is Open Source Computer Vision Library.)
+
+pip install -user [lib]     install python lib for current user only
+pip uninstall [lib]         uninstall python lib
+pip freeze > req.txt        output all the lib info to the req.txt file
+pip install -r req.txt      install all the lib from the req.txt file
+```
+
 <!--
 #### c/c++
-
-#### python
 
 #### virtualenv
 
 #### Deep Learning framework
+
+#### Nvidia GPU
+```
+nvidia-smi          display GPU information
+nvcc -V             display CUDA version
+```
 
 #### Tips for trouble shooting
 
