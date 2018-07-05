@@ -54,7 +54,7 @@ Directory    Description
 | ls    | list files |
 | ls -l | list files with line-wise |
 | ls -a | list all files, include hidden files |
-| ```ls | wc -w``` | count files |
+| ls &#124; wc -w | count files |
 
 #### packaging
 | Command | Description |
