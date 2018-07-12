@@ -12,6 +12,7 @@ This cheatsheet is summarized from personal experience and other online tutorial
 ## Basic directory constraction
 ```
 Directory    Description
+--------------------------------------------------------------------------
 /            root
 ├── bin      primitive command of linux
 ├── boot     boot files
@@ -108,6 +109,7 @@ Directory    Description
 | ssh -i [private-key] user@example.com | ssh to the [example.com] as [user] with [private-key] |
 | scp [local-file] user@example.com:~/ | send [local-file] to user's home directory of example.com |
 | scp -i [private-key] [local-file] user@example.com:~/ | send [local-file] to user's home directory of example.com with [private-key] |
+| ssh-keygen [-b 2048] [-t rsa] [-N pass-phrase] | create ssh access key, -b: bit length, -t: type of key, -N: pass phrase |
 
 #### User
 | Command | Description |
@@ -127,8 +129,8 @@ Directory    Description
 
 
 ## Library management
+There are mainly two library management systems. "dep" format system and "rpm" format system.
 <!--
-There are mainly two library management systems. One is "dep" format system, another is "rpm" format system.
 | Lib-management system | Linux distribution |
 | --- | --- |
 | dep format | Debian, Ubuntu, Raspbian, etc. |
@@ -208,6 +210,9 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | /word | search "word", after that hit 'n' to search next, hit 'N' to back previous |
 | ?word | search "word" with opposite direction |
 | *     | search the word under the cursor |
+| :%s/old/new/g  | search all "old" in this file, and replase it by "new". |
+| :%s/old/new/gc | if confirmation is needed, add "c" at the last. |
+| :s/old/new/g   | execute left command after select area by visual-mode, only selected area will be replaced. |
 | **indent** ||
 | >> | add indent to current line |
 | << | delete indent from current line |
@@ -240,7 +245,53 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | :! [shell command] | execute [Shell command] |
 
 > [Note] configure by editing ~/.vimrc file.
+#### sample of .vimrc file
+```
+"" setting
+set fenc=utf-8
+set nobackup
+set noswapfile
+set autoread
+set hidden
+set showcmd
+set scrolloff=3
 
+"" view
+set number
+set cursorline
+set virtualedit=onemore
+set smartindent
+set title
+set showmatch
+set laststatus=2
+set wildmode=list:longest
+set virtualedit=block
+set whichwrap=b,s,[,],<,>,h,l
+set backspace=indent,eol,start
+
+"" tab
+set expandtab     "" set Tab to Space
+set tabstop=4     "" width of tab, not head of line
+set shiftwidth=4  "" width of tab, head of line
+
+"" search
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set hlsearch
+
+"" key mapping
+nnoremap j gj
+nnoremap k gk
+noremap <Esc><Esc> :nohlsearch<CR><Esc>
+noremap <S-h> ^
+noremap <S-l> $
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+inoremap <F5> <C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>
+nnoremap <S-j> jzz
+nnoremap <S-k> kzz
+```
 
 ## Misc.
 #### git
