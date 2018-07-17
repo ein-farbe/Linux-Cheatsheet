@@ -69,7 +69,7 @@ Directory    Description
 #### link
 | Command | Description |
 | --- | --- |
-| ln -sf [target] [link-file] | make symblic link[link] of [target] |
+| ln -s [target] [link-file] | make symblic link[link] of [target] |
 | ln [target] [link] | make hard link[link] of [target], copy entity of [target] |
 
 ## System management
@@ -327,6 +327,8 @@ pip install -user [lib]     # install python lib for current user only
 pip uninstall [lib]         # uninstall python lib
 pip freeze > req.txt        # output all the lib info to the req.txt file
 pip install -r req.txt      # install all the lib from the req.txt file
+
+nohup train.py > out.log &  # execute train.py process in background, and result will be written in out.log.
 ```
 
 #### Nvidia GPU
