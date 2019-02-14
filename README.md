@@ -42,6 +42,8 @@ Directory    Description
 | cd .. | move to upper directory |
 | cd [dir] | move to [dir] |
 | mkdir [dir] | make directory named [dir] |
+| mv [src-dir] [dst-dir] | move src-dir to dst-dir |
+| rm -r [dir] | delete [dir] |
 
 #### for file
 | Command | Description |
@@ -64,7 +66,9 @@ Directory    Description
 | --- | --- |
 | tar -xvf file.tar | unpack file.tar |
 | tar -zvxf file.tar.gz | unpack file.tar.gz |
+| tar -zcvf dir.tar.gz dir | pack dir into dir.tar.gz |
 | zip -r -q file.zip [dir] | compress [dir] to file.zip without display progress(-q) |
+| unzip -q file.zip | decompress file.zip without display progress(-q) |
 
 #### link
 | Command | Description |
@@ -100,6 +104,7 @@ Directory    Description
 | Command | Description |
 | --- | --- |
 | chown root:root [file] | change [file]'s owner to root |
+| chown user:user [file] | change [file]'s owner to user |
 
 #### Network
 | Command | Description |
@@ -110,6 +115,8 @@ Directory    Description
 | scp [local-file] user@example.com:~/ | send [local-file] to user's home directory of example.com |
 | scp -i [private-key] [local-file] user@example.com:~/ | send [local-file] to user's home directory of example.com with [private-key] |
 | ssh-keygen [-b 2048] [-t rsa] [-N pass-phrase] | create ssh access key, -b: bit length, -t: type of key, -N: pass phrase |
+| sshfs [user]@[host]:[dir] [local-dir] -o IdentityFile=[key-file] | mount remote dir via ssh |
+| umout -l [local-dir] | unmount directory |
 
 #### User
 | Command | Description |
@@ -195,6 +202,8 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | gg | move to the top of the file |
 | G  | move to the bottom of the file |
 | :7 | move to the 7th line, or can use any number |
+| [Ctrl]f | scroll foward |
+| [Ctrl]b | scroll back |
 | **edit** ||
 | .  | do previous command again |
 | x  | delete char under the cursor |
@@ -245,6 +254,7 @@ There are mainly three mode in vim; normal mode, visual mode and insert mode.
 | :! [shell command] | execute [Shell command] |
 
 > [Note] configure by editing ~/.vimrc file.
+
 #### sample of .vimrc file
 ```
 "" setting
@@ -255,6 +265,7 @@ set autoread
 set hidden
 set showcmd
 set scrolloff=3
+set paste
 
 "" view
 set number
@@ -288,6 +299,7 @@ noremap <Esc><Esc> :nohlsearch<CR><Esc>
 noremap <S-h> ^
 noremap <S-l> $
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+nnoremap I i <ESC>l
 inoremap <F5> <C-r>=strftime('%Y-%m-%d %H:%M:%S')<Return>
 nnoremap <S-j> jzz
 nnoremap <S-k> kzz
@@ -321,6 +333,7 @@ pip install [lib]           # install python lib
 
 **e.g.**
 pip install numpy           # install numpy lib (NumPy is the fundamental package for scientific computing with Python.)
+pip install scipy           # install scipy lib
 pip install opency-python   # install open-cv lib (open-cv is Open Source Computer Vision Library.)
 
 pip install -user [lib]     # install python lib for current user only
@@ -329,6 +342,14 @@ pip freeze > req.txt        # output all the lib info to the req.txt file
 pip install -r req.txt      # install all the lib from the req.txt file
 
 nohup train.py > out.log &  # execute train.py process in background, and result will be written in out.log.
+```
+
+#### virtualenv
+```
+pip install virtualenv          # install virtualenv
+virtualenv [env_name]           # create new virtualenv as "env_name"
+source [env_name]/bin/activate  # activate virtualenv [env_name]
+deactivate                      # deactivate virtualenv
 ```
 
 #### Nvidia GPU
@@ -350,8 +371,6 @@ g++ -Wall source.cpp
 g++ -std=c++11 source.cpp
 g++ -std=c++14 source.cpp
 ```
-
-#### virtualenv
 
 #### Deep Learning framework
 
